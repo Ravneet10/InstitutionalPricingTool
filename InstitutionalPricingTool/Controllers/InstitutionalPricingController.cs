@@ -13,7 +13,7 @@ using System.Web.Http.Description;
 
 namespace InstitutionalPricingTool.Controllers
 {
-    [Route("api/[controller]")]
+    [RoutePrefix("api/institutionalpricingtool")]
     public class InstitutionalPricingController : ApiController
     {
         private readonly IMediator _mediator;
@@ -21,7 +21,6 @@ namespace InstitutionalPricingTool.Controllers
 
         [HttpGet]
         [Route("getproposals")]
-        [ResponseType(typeof(Proposals))]
         public async Task<IHttpActionResult> Get()
         {
             _logger.LogDebug("Fetching proposals data");
