@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace InstitutionalPricing.Entity
 {
-    public class Proposals
+    public class Proposals: IdentityUser
     {
         public Guid Id { get; set; }
         public string ProposalName { get; set; }

@@ -6,7 +6,7 @@ namespace InstitutionalPricing.Entity
 {
     public interface IInstitutionalPricingContext 
     {
-        IDbSet<Proposals> Proposals { get; set; }
-        IDbSet<Facilities> Facilities { get; set; }
+        public IDbSet<Proposals> Proposals { get; set; }
+        public IDbSet<Facilities> Facilities { get; set; }
     }
 }

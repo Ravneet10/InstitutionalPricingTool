@@ -1,5 +1,5 @@
 export function getProposals() {
-    return fetch('https://localhost:44342/api/institutionalpricingtool/getproposals')
+    return fetch('https://localhost:44342/InstitutionalPricing/getproposals')
   .then(response =>{
     console.log("response",response)
     response.json()})
