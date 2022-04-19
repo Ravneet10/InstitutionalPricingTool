@@ -28,11 +28,18 @@ namespace InstitutionalPricingTool.Controllers
         }
         [HttpGet]
         [Route("getproposals")]
-        public async Task<System.Web.Http.IHttpActionResult> Get()
+        public async Task<IActionResult> Get()
         {
             var proposalsResponse = await _mediator.SendAsync(new GetProposalsQuery() { });
-           // return null;
-            return (System.Web.Http.IHttpActionResult)Ok(proposalsResponse);
+            return Ok(proposalsResponse.ProposalList);
+        }
+
+        [HttpGet]
+        [Route("getFacilities")]
+        public async Task<IActionResult> Get(Guid proposalId)
+        {
+            var facilityResponse = await _mediator.SendAsync(new GetFaclitiesQuery() { ProposalId=proposalId});
+            return Ok(facilityResponse.FacilitiesList);
         }
 
     }

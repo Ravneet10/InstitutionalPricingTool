@@ -14,12 +14,10 @@ namespace InstitutionalPricing.Business.Handlers
     public class GetProposalsQueryHandler : IAsyncRequestHandler<GetProposalsQuery, GetProposalsResult>
     {
         private readonly IInstitutionalPricingContext _pricingContext;
-        //private readonly IServiceProvider _services;
 
         public GetProposalsQueryHandler(IInstitutionalPricingContext pricingContext)
         {
             _pricingContext = pricingContext;
-          //  _services = services;
         }
         public async Task<GetProposalsResult> Handle(GetProposalsQuery query)
         {
@@ -27,10 +25,8 @@ namespace InstitutionalPricing.Business.Handlers
             {
                 ProposalList = new List<Proposals>()
             };
-           // var dbc = _services.GetService(typeof(InstitutionalPricingContext)) as InstitutionalPricingContext;
-            var clientLeaveReasonsQuery = await _pricingContext.Proposals.ToListAsync();
-
-            var results = await _pricingContext.Proposals
+            var proposalsList = _pricingContext.Proposals != null ?
+                await _pricingContext.Proposals
                 .Select(proposal => new Proposals
                 {
                     Id = proposal.Id,
@@ -39,9 +35,10 @@ namespace InstitutionalPricing.Business.Handlers
                     CustomerGrpName = proposal.CustomerGrpName,
                     Date = proposal.Date,
                     Status = proposal.Status,
-                }).ToListAsync();
+                }).ToListAsync() :
+                MockData.GetProposals();
 
-            getProposalsResult.ProposalList = results;
+            getProposalsResult.ProposalList = proposalsList;
             return getProposalsResult;
         }
 

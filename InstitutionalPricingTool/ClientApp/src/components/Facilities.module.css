@@ -1,0 +1,16 @@
+.flexColumnDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexRowDiv {
+    display: flex; 
+}
+
+.headerColumn {
+    background-color: lightgrey;
+}
+
+.table > thead > tr > th{
+    background-color: plum;
+    }

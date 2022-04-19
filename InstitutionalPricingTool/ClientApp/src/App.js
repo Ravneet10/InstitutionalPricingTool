@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import  ProposalsPage from './components/ProposalsPage';
+import  InstitutionPricingPage from './components/InstitutionPricingPage';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 
@@ -13,7 +13,7 @@ export default class App extends Component {
   render () {
     return (
       <Layout>
-        <Route exact path='/' component={ProposalsPage} />
+        <Route exact path='/' component={InstitutionPricingPage} />
         <Route path='/counter' component={Counter} />
         <Route path='/fetch-data' component={FetchData} />
       </Layout>
