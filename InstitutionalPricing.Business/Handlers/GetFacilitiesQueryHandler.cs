@@ -24,7 +24,7 @@ namespace InstitutionalPricing.Business.Handlers
                 FacilitiesList = new List<Facilities>()
             };
             var facilities = _pricingContext.Facilities != null ?
-               await _pricingContext.Facilities
+               await _pricingContext.Facilities.Where(x => x.ProposalId == query.ProposalId)
                 .Select(facility => new Facilities
                 {
                     Id = facility.Id,

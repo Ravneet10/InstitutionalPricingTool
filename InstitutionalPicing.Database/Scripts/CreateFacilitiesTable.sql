@@ -8,7 +8,7 @@ GO
 
 CREATE TABLE [dbo].Facilities(
 	[Id] [uniqueidentifier] NOT NULL,
-	[ProposalName] [varchar](max) NOT NULL,
+	[ProposalId] [uniqueidentifier] NOT NULL,
 	FacilityName [varchar](max) NOT NULL,
 	BookingCountry [varchar](max) NOT NULL,
 	Currency [varchar](max) NOT NULL,
@@ -42,5 +42,11 @@ ALTER TABLE [dbo].Facilities ADD  CONSTRAINT [DF_Facilities_ModifiedBy]  DEFAULT
 GO
 
 ALTER TABLE [dbo].Facilities ADD  CONSTRAINT [DF_Facilities_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
 
+ALTER TABLE [dbo].[Facilities]  WITH CHECK ADD  CONSTRAINT [FK_Facilities_Proposals] FOREIGN KEY([ProposalId])
+REFERENCES [dbo].[Proposals] ([Id])
+GO
+
+ALTER TABLE [dbo].[Facilities] CHECK CONSTRAINT [FK_Facilities_Proposals]
 

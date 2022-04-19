@@ -87,6 +87,8 @@ function ProposalsPage() {
         rowIdentifier={rowIdentifier}
         expandable
         obeyDataStates
+        defaultPageSize={10}
+        showPagination={false}
         />
       </div>
       )}

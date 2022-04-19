@@ -10,7 +10,7 @@ namespace InstitutionalPricing.Entity
     public class Facilities
     {
         public Guid Id { get; set; }
-        public string ProposalName { get; set; }
+        public Guid ProposalId { get; set; }
         public string FacilityName { get; set; }
         public string BookingCountry { get; set; }
         public string Currency { get; set; }
