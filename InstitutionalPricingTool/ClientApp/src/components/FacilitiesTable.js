@@ -25,8 +25,8 @@ const onMenuChange=(selectedFacility)=>{
             <tr>
           <th>
               Facility
-            <UncontrolledDropdown >
-              <DropdownToggle caret size="sm" color="warning">{dropDownValue}</DropdownToggle>
+            <UncontrolledDropdown className={styles.dropdownParent} >
+              <DropdownToggle caret size="sm" className={styles.dropdownToggle}>{dropDownValue}</DropdownToggle>
               <DropdownMenu> {facilitiesList.map((option, index) => <DropdownItem key={option.id} 
               onClick={()=>onMenuChange(option)}>{option.facilityName}</DropdownItem>)}
               </DropdownMenu>

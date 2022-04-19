@@ -48,8 +48,8 @@ function ProposalsPage() {
             return (
               <div>
                 {isExpanded
-                  ? <Button style={{ backgroundColor: "#24a0ed" }} onClick={()=>{setIsFacilityExpanded(false)}}>Close Summary</Button>
-                  : <Button style={{ backgroundColor: "#24a0ed" }} onClick={()=>{setIsFacilityExpanded(true)}}>View Summary</Button>
+                  ? <Button className= {styles.btnAsLink} onClick={()=>{setIsFacilityExpanded(false)}}>CLOSE SUMMARY</Button>
+                  : <Button className= {styles.btnAsLink} onClick={()=>{setIsFacilityExpanded(true)}}>VIEW SUMMARY</Button>
                 }
               </div>
             );
@@ -78,7 +78,7 @@ function ProposalsPage() {
     <>
       {proposalsList && proposalsList.length>0 &&(
       <div style={{marginTop:"2rem"}}>
-        <ReactTable columns={columns}
+        <ReactTable className= {styles.reactTableProposal} columns={columns}
         data={proposalsList} 
         SubComponent={createSubComponet}
         expanderType="pencil"
@@ -87,7 +87,7 @@ function ProposalsPage() {
         rowIdentifier={rowIdentifier}
         expandable
         obeyDataStates
-        defaultPageSize={10}
+        defaultPageSize={5}
         showPagination={false}
         />
       </div>

@@ -1,3 +1,15 @@
+.reactTableProposal{
+    padding:8px;
+}
+
+.reactTableProposal .rt-table .rt-thead{
+    background-color: grey;;
+}
+
+.reactTableProposal > rt-table > rt-thead{
+    background-color: plum;
+    }
+
 .flexColumnDiv{
     display: flex;
     flex-direction: column;
@@ -5,12 +17,45 @@
 
 .flexRowDiv {
     display: flex; 
+    width: 80%;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .headerColumn {
-    background-color: lightgrey;
+   text-align: left;
 }
 
 .table > thead > tr > th{
     background-color: plum;
+    }
+
+
+    .dropdownToggle, .dropdownToggle:hover, .dropdownToggle:active {
+    border: 1px solid #000; 
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    min-width: 300px;
+    text-align: left;
+    }
+
+    .dropdownToggle:after {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+        }
+
+    .dropdownParent{
+        display: inline;
+        margin-left: 32px;
+    }
+
+    .btnAsLink, .btnAsLink:hover, .btnAsLink:active{
+        color: #24a0ed !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        font-weight: bold;
     }
