@@ -20,7 +20,7 @@ const onMenuChange=(selectedFacility)=>{
 }
   return (
     <>
-      {facilitiesList && facilitiesList.length > 0 && (
+      {facilitiesList && facilitiesList.length > 0 ? (
         <table>
             <tr>
           <th>
@@ -54,7 +54,9 @@ const onMenuChange=(selectedFacility)=>{
             </td>
           </tr>
         </table>
-      )}
+      ): <div>
+          No facilities found
+          </div>}
     </>
   );
 }
