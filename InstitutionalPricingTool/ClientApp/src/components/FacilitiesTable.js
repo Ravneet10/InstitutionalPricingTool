@@ -17,7 +17,7 @@ function FacilitiesTable(props) {
         setDropDownValue(result[0].facilityName);
       }
     });
-  }, []);
+  }, [props.proposalId]);
 const onMenuChange=(selectedFacility)=>{
     setDropDownValue(selectedFacility.facilityName);
     setSelectedFacility(selectedFacility);
