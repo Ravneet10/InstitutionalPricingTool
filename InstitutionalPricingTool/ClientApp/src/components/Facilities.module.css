@@ -25,6 +25,7 @@
 
 .headerColumn {
    text-align: left;
+   font-weight: bold;
 }
 
 .table > thead > tr > th{
