@@ -32,9 +32,6 @@ namespace InstitutionalPricingTool
         {
 
             services.AddControllersWithViews();
-            //services.AddDbContext<InstitutionalPricingContext>(options =>
-            //   options.UseSqlServer("Server=localhost;Database=Zenith.Visits;Trusted_Connection=True;MultipleActiveResultSets=True;"));
-            // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
@@ -45,12 +42,6 @@ namespace InstitutionalPricingTool
             // Register your own things directly with Autofac here. Don't
             // call builder.Populate(), that happens in AutofacServiceProviderFactory
             // for you.
-
-            //builder
-            //    .RegisterType<InstitutionalPricingContext>()
-            //    .As<IInstitutionalPricingContext>()
-            //    .WithParameter(new TypedParameter(typeof(Action<string>), "Server=localhost;Database=Zenith.Visits;Trusted_Connection=True;MultipleActiveResultSets=True;"))
-            //    .WithParameter(new TypedParameter(typeof(string), ""));
 
             builder.RegisterAssemblyTypes(typeof(IMediator).Assembly).AsImplementedInterfaces();
             DbContextOptionsBuilder<InstitutionalPricingContext> optionsBuilder = new DbContextOptionsBuilder<InstitutionalPricingContext>();
