@@ -18,18 +18,14 @@ namespace InstitutionalPricingTool.Controllers
     public class InstitutionalPricingController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ILogger _logger;
-
-        public InstitutionalPricingController(IMediator mediator, ILogger<InstitutionalPricingController> logger)
+        public InstitutionalPricingController(IMediator mediator)
         {
             _mediator = mediator;
-            _logger = logger;
         }
         [HttpGet]
         [Route("getproposals")]
         public async Task<IActionResult> Get()
         {
-            _logger.LogDebug("Fetch proposals list");
             var proposalsResponse = await _mediator.SendAsync(new GetProposalsQuery() { });
             return Ok(proposalsResponse.ProposalList);
         }
@@ -40,10 +36,8 @@ namespace InstitutionalPricingTool.Controllers
         {
             if(proposalId == Guid.Empty)
             {
-                _logger.LogError("Invalid proposal Id");
                 throw new System.Exception("Invalid Proposal Id");
             }
-            _logger.LogDebug("Fetch facilities data");
             var facilityResponse = await _mediator.SendAsync(new GetFaclitiesQuery() { ProposalId=proposalId});
             return Ok(facilityResponse.FacilitiesList);
         }

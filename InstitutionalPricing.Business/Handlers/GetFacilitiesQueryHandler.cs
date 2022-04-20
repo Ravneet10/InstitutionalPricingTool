@@ -1,7 +1,6 @@
 ﻿using InstitutionalPricing.Business.Queries;
 using InstitutionalPricing.Entity;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,16 +12,13 @@ namespace InstitutionalPricing.Business.Handlers
     public class GetFacilitiesQueryHandler : IAsyncRequestHandler<GetFaclitiesQuery, GetFacilitiesResult>
     {
         private readonly IInstitutionalPricingContext _pricingContext;
-        private readonly ILogger _logger;
 
-        public GetFacilitiesQueryHandler(IInstitutionalPricingContext pricingContext, ILogger<GetFacilitiesQueryHandler> logger)
+        public GetFacilitiesQueryHandler(IInstitutionalPricingContext pricingContext)
         {
             _pricingContext = pricingContext;
-            _logger = logger;
         }
         public async Task<GetFacilitiesResult> Handle(GetFaclitiesQuery query)
         {
-            _logger.LogDebug("Fetching Facilities data");
             var facilitiesResult = new GetFacilitiesResult
             {
                 FacilitiesList = new List<Facilities>()
@@ -47,7 +43,6 @@ namespace InstitutionalPricing.Business.Handlers
             }
             catch(Exception ex)
             {
-                _logger.LogError("An error occurred while fetching facilities");
                 throw new System.Exception("An error occurred while fetching facilities",ex);
             }
             return facilitiesResult;

@@ -26,7 +26,6 @@ const onMenuChange=(selectedFacility)=>{
     <>
       {facilitiesList && facilitiesList.length > 0 ? (
         <table>
-          <tbody>
             <tr>
           <th>
               Facility
@@ -58,7 +57,6 @@ const onMenuChange=(selectedFacility)=>{
             <span>{selectedFacility != null ? new Date(selectedFacility.maturityDate).toLocaleDateString():""}</span>
             </td>
           </tr>
-          </tbody>
         </table>
       ): <div>
           No facilities found
