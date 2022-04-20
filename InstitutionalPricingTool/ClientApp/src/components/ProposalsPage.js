@@ -8,8 +8,6 @@ import { Button } from "reactstrap";
  
 function ProposalsPage() {
   const [proposalsList, setProposal] = useState([]);
-  const [expanded, setExpanded] = useState([]);
-  const[isFacilityExapanded,setIsFacilityExpanded] = useState(false);
   const columns = React.useMemo(
     () => [
       {
@@ -22,18 +20,20 @@ function ProposalsPage() {
         Header:(<div className={styles.headerColumn}>Customer Group</div>),
         accessor: "customerGrpName",
       },
+      
+      {
+          id:"id",
+          Header: (
+            <div className={styles.headerColumn}>Date (last saved)</div>
+        ),
+          accessor: (d) => new Date(d.date).toLocaleDateString('en-us', { day:"numeric",year:"numeric", month:"short" }) ,
+      },
       {
         Header: (
             <div className={styles.headerColumn}>Description</div>
         ),
+        width:200,
         accessor: "description",
-      },
-      {
-          id:"id",
-          Header: (
-            <div className={styles.headerColumn}>Date(last saved)</div>
-        ),
-          accessor: (d) => new Date(d.date).toLocaleDateString(),
       },
       {
         Header: (
@@ -48,8 +48,8 @@ function ProposalsPage() {
             return (
               <div>
                 {isExpanded
-                  ? <Button className= {styles.btnAsLink} onClick={()=>{setIsFacilityExpanded(false)}}>CLOSE SUMMARY</Button>
-                  : <Button className= {styles.btnAsLink} onClick={()=>{setIsFacilityExpanded(true)}}>VIEW SUMMARY</Button>
+                  ? <Button className= {styles.btnAsLink}>CLOSE SUMMARY</Button>
+                  : <Button className= {styles.btnAsLink}>VIEW SUMMARY</Button>
                 }
               </div>
             );
@@ -70,9 +70,6 @@ function ProposalsPage() {
   };
   const rowIdentifier = (row) => row.original.id;
 
-  const isExpanded = (row) => {
-  return row.original.id === expanded
-};
 
   return (
     <>
@@ -82,8 +79,6 @@ function ProposalsPage() {
         data={proposalsList} 
         SubComponent={createSubComponet}
         expanderType="pencil"
-        isInEditMode={isExpanded}
-        isExpanded={isExpanded}
         rowIdentifier={rowIdentifier}
         expandable
         obeyDataStates

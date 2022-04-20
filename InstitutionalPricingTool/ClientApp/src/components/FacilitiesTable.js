@@ -12,6 +12,10 @@ function FacilitiesTable(props) {
   useEffect(() => {
     getFacilities(props.proposalId).then((result) => {
       setFacilities(result);
+      if(result && result.length>0){
+        setSelectedFacility(result[0]);
+        setDropDownValue(result[0].facilityName);
+      }
     });
   }, []);
 const onMenuChange=(selectedFacility)=>{
@@ -42,7 +46,7 @@ const onMenuChange=(selectedFacility)=>{
             <span>{selectedFacility && selectedFacility.currency}</span>
             </td>
             <td className={styles.flexColumnDiv}>Limit
-            <span>{selectedFacility && selectedFacility.limit}</span>
+            <span>{selectedFacility && selectedFacility.limit.toFixed(2)}</span>
             </td>
             <td className={styles.flexColumnDiv}>Start Date
             <span>{selectedFacility != null ? new Date(selectedFacility.startDate).toLocaleDateString():""}</span>
