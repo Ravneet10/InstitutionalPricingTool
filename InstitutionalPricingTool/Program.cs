@@ -19,6 +19,7 @@ namespace InstitutionalPricingTool
                 try
                 {
                     var context = services.GetRequiredService<InstitutionalPricingContext>();
+                   // DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

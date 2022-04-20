@@ -25,27 +25,20 @@ namespace InstitutionalPricing.Business.Handlers
             {
                 ProposalList = new List<Proposals>()
             };
-            try
-            {
-                var proposalsList = _pricingContext.Proposals != null ?
-                    await _pricingContext.Proposals
-                    .Select(proposal => new Proposals
-                    {
-                        Id = proposal.Id,
-                        Description = proposal.Description,
-                        ProposalName = proposal.ProposalName,
-                        CustomerGrpName = proposal.CustomerGrpName,
-                        Date = proposal.Date,
-                        Status = proposal.Status,
-                    }).ToListAsync() :
-                    MockData.GetProposals();
+            var proposalsList = _pricingContext.Proposals != null ?
+                await _pricingContext.Proposals
+                .Select(proposal => new Proposals
+                {
+                    Id = proposal.Id,
+                    Description = proposal.Description,
+                    ProposalName = proposal.ProposalName,
+                    CustomerGrpName = proposal.CustomerGrpName,
+                    Date = proposal.Date,
+                    Status = proposal.Status,
+                }).ToListAsync() :
+                MockData.GetProposals();
 
-                getProposalsResult.ProposalList = proposalsList;
-            }
-            catch (Exception ex)
-            {
-                throw new System.Exception("An error occurred while fetching proposals",ex);
-            }
+            getProposalsResult.ProposalList = proposalsList;
             return getProposalsResult;
         }
 
