@@ -19,7 +19,6 @@ namespace InstitutionalPricingTool.Controllers
     [Route("[controller]")]
     public class InstitutionalPricingController : ControllerBase
     {
-        //private readonly IDbContextFactory<IInstitutionalPricingContext> _contextFactory;
 
         private readonly IMediator _mediator;
         public InstitutionalPricingController(IMediator mediator)
