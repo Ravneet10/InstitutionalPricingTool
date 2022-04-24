@@ -25,7 +25,6 @@ namespace InstitutionalPricing.Business.Handlers
             {
                 ProposalList = new List<Proposals>()
             };
-            try { 
             var proposalsList = _pricingContext.Proposals != null ?
                 await _pricingContext.Proposals
                 .Select(proposal => new Proposals
@@ -40,11 +39,6 @@ namespace InstitutionalPricing.Business.Handlers
                 MockData.GetProposals();
 
             getProposalsResult.ProposalList = proposalsList;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("An error occurred while fetching proposals", ex);
-            }
             return getProposalsResult;
         }
 

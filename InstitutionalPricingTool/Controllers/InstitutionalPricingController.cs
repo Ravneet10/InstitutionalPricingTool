@@ -38,10 +38,6 @@ namespace InstitutionalPricingTool.Controllers
         [Route("getFacilities")]
         public async Task<IActionResult> Get(Guid proposalId)
         {
-            if (proposalId == Guid.Empty)
-            {
-                throw new Exception("Invalid Proposal Id");
-            }
             var facilityResponse = await _mediator.SendAsync(new GetFaclitiesQuery() { ProposalId=proposalId});
             return Ok(facilityResponse.FacilitiesList);
         }
