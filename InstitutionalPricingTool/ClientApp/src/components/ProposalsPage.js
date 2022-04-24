@@ -77,7 +77,6 @@ function ProposalsPage() {
 
   return (
     <>
-    {console.log("errorMessage",errorMessage)}
       {errorMessage != null && <div>Some Error Occurred</div>}
       {isLoading && <div>Loading in progress ...</div>}
       {!isLoading && proposalsList && proposalsList.length > 0 && (
