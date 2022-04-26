@@ -6,10 +6,7 @@ import FacilitiesTable from "./FacilitiesTable";
 import styles from "./Facilities.module.css";
 import { Button } from "reactstrap";
 
-function ProposalsPage() {
-  const [proposalsList, setProposal] = useState([]);
-  const [errorMessage, seterrorMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+function ProposalsPage(props) {
   const columns = React.useMemo(
     () => [
       {
@@ -58,18 +55,7 @@ function ProposalsPage() {
     ],
     []
   );
-  useEffect(() => {
-    setIsLoading(true);
-    getProposals()
-      .then((result) => {
-        setIsLoading(false);
-        setProposal(result);
-      })
-      .catch((x) => {
-        seterrorMessage(x);
-        setIsLoading(true);
-      });
-  }, []);
+
   const createSubComponet = (row) => {
     return <FacilitiesTable proposalId={row.original.id} />;
   };
@@ -77,14 +63,12 @@ function ProposalsPage() {
 
   return (
     <>
-      {errorMessage != null && <div>Some Error Occurred</div>}
-      {isLoading && <div>Loading in progress ...</div>}
-      {!isLoading && proposalsList && proposalsList.length > 0 && (
+      {props.proposalsList && props.proposalsList.length > 0 && (
         <div style={{ marginTop: "2rem" }}>
           <ReactTable
             className={styles.reactTableProposal}
             columns={columns}
-            data={proposalsList}
+            data={props.proposalsList}
             SubComponent={createSubComponet}
             expanderType="pencil"
             rowIdentifier={rowIdentifier}

@@ -21,7 +21,7 @@ function FacilitiesTable(props) {
     getFacilities(props.proposalId)
       .then((result) => {
         setFacilities(result);
-        setIsLoading(true);
+        setIsLoading(false);
         if (result && result.length > 0) {
           setSelectedFacility(result[0]);
           setDropDownValue(result[0].facilityName);
@@ -29,7 +29,7 @@ function FacilitiesTable(props) {
       })
       .catch((x) => {
         seterrorMessage(x);
-        setIsLoading(true);
+        setIsLoading(false);
       });
   }, [props.proposalId]);
   const onMenuChange = (selectedFacility) => {
