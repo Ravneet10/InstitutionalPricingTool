@@ -15,7 +15,7 @@ class InstitutionPricingPage extends React.Component {
   }
 
   onButtonClick = () => {
-    this.setState({ showProposals: true });
+    this.setState({ showProposals: true,isLoading: true });
     getProposals()
       .then((result) => {
         this.setState({ isLoading: false, proposalList: result });
