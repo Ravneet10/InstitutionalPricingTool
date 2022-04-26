@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactTable from "react-table-v6";
-import { getProposals } from "./interface";
 import "react-table-v6/react-table.css";
 import FacilitiesTable from "./FacilitiesTable";
 import styles from "./Facilities.module.css";
